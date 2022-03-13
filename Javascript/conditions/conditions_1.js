@@ -1,4 +1,4 @@
-// Aşağıdakı proqram ziyarətçinin sıra nömrəsinə əsasən daxil olacağı zalın müəyyənləşdirilməsi üçün yazılıb.
+// Aşağıdakı proqram ziyarətçinin sıra nömrəsinə əsasən daxil olacağı zalın müəyyənləşdirilməsi üçün yazılıb.(if, else if və else ilə)
 
 let sira="1";
 
