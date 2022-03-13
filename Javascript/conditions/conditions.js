@@ -1,3 +1,4 @@
+// Aşağıdakı proqram ziyarətçinin sıra nömrəsinə əsasən daxil olacağı zalın müəyyənləşdirilməsi üçün yazılıb.
 let sira="1";
 
 if(sira=="1"){
