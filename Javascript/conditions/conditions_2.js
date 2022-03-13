@@ -1,9 +1,9 @@
-// Aşağıdakı proqram tələbənin daxil etdiyi məlumatlara əsasən onun imtahanda hansı nəticəni göstərdiyini müəyyənləşdirmək üçün yazılıb.
+/* Aşağıdakı proqram tələbənin daxil etdiyi məlumatlara əsasən onun imtahanda hansı nəticəni göstərdiyini müəyyənləşdirmək üçün yazılıb.(if, else if və else ilə)*/
 
-let ad=prompt("Zəhmət olmasa adınızı daxil edin: ")
-let soyad=prompt("Zəhmət olmasa soyadınızı daxil edin: ")
-let fənn=prompt("Zəhmət olmasa fənn adını daxil edin: ")
-let imtahanBali=prompt("Zəhmət olmasa imtahan balınızı daxil edin: ")
+let ad=prompt("Zəhmət olmasa adınızı daxil edin: ");
+let soyad=prompt("Zəhmət olmasa soyadınızı daxil edin: ");
+let fənn=prompt("Zəhmət olmasa fənn adını daxil edin: ");
+let imtahanBali=prompt("Zəhmət olmasa imtahan balınızı daxil edin: ");
 
 if(imtahanBali<51){
     alert(ad + " " + soyad + " " + "sizin" + " " + fənn + " " + "fənnindən əldə etdiyiniz nəticə E-dir.")
