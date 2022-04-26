@@ -1,29 +1,29 @@
 // // Creating Element
-// let li=document.createElement("li");
+let li=document.createElement("li");
 // // Add class
-// li.className=("list-group-item list-group-item-secondary")
+li.className=("list-group-item list-group-item-secondary")
 // // Add attribut
-// li.setAttribute("title","new item")
+li.setAttribute("title","new item")
 // // Text Node
-// const text=document.createTextNode("new item");
-// li.appendChild(text)
+const text=document.createTextNode("new item");
+li.appendChild(text)
 
-// const a=document.createElement("a");
-// a.setAttribute("href","#");
-// a.className="delete-item float-right";
-// a.innerHTML='<i class="fas fa-times"></i>';
+const a=document.createElement("a");
+a.setAttribute("href","#");
+a.className="delete-item float-right";
+a.innerHTML='<i class="fas fa-times"></i>';
 // // append a to li
-// li.appendChild(a)
+li.appendChild(a)
 // // append li to ul
-// document.querySelector("#task-list").appendChild(li);
+document.querySelector("#task-list").appendChild(li);
 
-// console.log(li)
+console.log(li)
 
 let div=document.createElement("div");
 div.className="card-header";
 
-let text=document.createTextNode("Task List");
-div.appendChild(text)
+let text1=document.createTextNode("Task List");
+div.appendChild(text1)
 
 const a=document.createElement("a");
 a.id="btnDeleteAll";
