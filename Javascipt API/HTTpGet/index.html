@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTTpGet</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+    <style>
+        #loading{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-2">
+        <div class="row">
+            <div class="col">
+                <form action="">
+                    <div class="input-group mb-3">
+                        <input type="text" id="inputid" class="form-control" aria-describedby="getData">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="button" id="getOne">Get One</button>
+                            <button class="btn btn-success" type="button" id="getAll">GetAll</button>
+                        </div>
+                    </div>
+                </form>
+                <div id="loading">
+                    <img src="loading.gif" alt="" width="100px">
+                </div>
+                <div id="results">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
