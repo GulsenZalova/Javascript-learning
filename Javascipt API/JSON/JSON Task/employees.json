@@ -1,0 +1,33 @@
+[
+        
+{
+        "firstname":"Aslan",
+        "lastname":"Aslanov",
+        "age":24,
+        "retired": false 
+},
+
+
+{
+        "firstname":"Aytən",
+        "lastname":"Aslana",
+        "age":18,
+        "retired": false 
+},
+
+
+{
+        "firstname":"Heydər",
+        "lastname":"Aslanov",
+        "age":65,
+        "retired": true
+},
+
+{
+        "firstname":"Sara",
+        "lastname":"Aslanova",
+        "age":3,
+        "retired": false 
+}
+
+]

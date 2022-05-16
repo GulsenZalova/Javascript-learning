@@ -1,0 +1,7 @@
+{
+    "employees":[
+        {"firstname":"Aslan","lastname":"Aslanov","Age":24},
+        {"firstname":"Aslan","lastname":"Aslanov","Age":24},
+        {"firstname":"Aslan","lastname":"Aslanov","Age":24}
+    ]
+}
