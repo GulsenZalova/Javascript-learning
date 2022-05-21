@@ -10,7 +10,7 @@ function addProduct(prd,callback){
     return new Promise (function(resolve,reject){
         setTimeout(()=>{
             products.push(prd)
-            let added=false
+            let added=true
             if(added){
                 return resolve()
             }else{
@@ -30,7 +30,7 @@ function getProdcucts(){
 }
 
 
-addProduct( {id:3, name:"Samsung s8", price:300})
+addProduct( {id:4, name:"Samsung s8", price:300})
 .then(getProdcucts)
 .catch(function(err){
     console.log(err)
