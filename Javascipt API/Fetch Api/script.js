@@ -83,4 +83,5 @@ function postExternalApi(){
         console.log(error)
     })
 }
-getExternalApi()
+
+postExternalApi()
