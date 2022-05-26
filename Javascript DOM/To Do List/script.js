@@ -4,11 +4,16 @@ const taskList=document.querySelector(".task-list");
 document.addEventListener("DOMContentLoaded",localStorageOxu)
 newTaskAddBtn.addEventListener("click", taskAdd);
 
-
 function taskAdd(e){
-    taskYarat(newTask.value)
-    logalStoage(newTask.value);
-    newTask.value='';
+
+    if(newTask.value==""){
+        alert("Task daxil edin!!!")
+    }else{
+        taskYarat(newTask.value)
+        logalStoage(newTask.value);
+        newTask.value=''; 
+    }
+
     
     e.preventDefault()
     
@@ -21,13 +26,17 @@ function tasksilTamamla(e){
     }
 
     if(klikElementi.classList.contains("task-btn-sil")){
-        klikElementi.parentElement.classList.toggle("yoxacix")
-        let silinenElement=klikElementi.parentElement.children[0].innerText
-        console.log(silinenElement)
-        localStorageSil(silinenElement)
-        klikElementi.parentElement.addEventListener("transitionend",function(){
-               klikElementi.parentElement.remove()
-        })
+
+        if(confirm("Silmək istədiyinizdən əminsiniz?")){
+            klikElementi.parentElement.classList.toggle("yoxacix")
+            let silinenElement=klikElementi.parentElement.children[0].innerText
+            console.log(silinenElement)
+            localStorageSil(silinenElement)
+            klikElementi.parentElement.addEventListener("transitionend",function(){
+                   klikElementi.parentElement.remove()
+            })
+        }
+   
     }
 
 }
@@ -43,8 +52,7 @@ localStorage.setItem('tasklar', JSON.stringify(tasklar));
 }
 function localStorageOxu(e){
     e.preventDefault();
-
-    let tasklar;
+let tasklar;
 if(localStorage.getItem('tasklar')===null){
     tasklar=[];
 }else{
@@ -55,6 +63,8 @@ tasklar.forEach(task => {
 });
     
 }
+
+
 function taskYarat(task){
     let taskDiv=document.createElement("div");
     taskDiv.classList.add("task-item");
@@ -89,4 +99,5 @@ if(localStorage.getItem('tasklar')===null){
     let silinenElementinindexi=tasklar.indexOf(task)
     console.log(silinenElementinindexi)
     tasklar.splice(silinenElementinindexi,1)
+    localStorage.setItem("tasklar",JSON.stringify(tasklar))
 }
