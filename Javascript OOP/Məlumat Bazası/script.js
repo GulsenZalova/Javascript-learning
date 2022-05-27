@@ -28,7 +28,6 @@ e.preventDefault()
 function verilenleriKontrolEt(degerler){
     for(const deger in degerler){
         if(degerler[deger]){
-            console.log(degerler[deger])
         }else{
             const netice={
                 durum:false,
@@ -36,7 +35,6 @@ function verilenleriKontrolEt(degerler){
             }
             return netice
         }
-
     }
     melumatTemizle()
     return{
@@ -91,6 +89,31 @@ const tr=document.createElement("tr");
  `
  istifadeciListi.appendChild(tr)
 butunistifadəciler.push(degerler)
-console.log(butunistifadəciler)
 melumatYarat("İstifadəçi qeyd edildi.", true)
+}
+
+
+istifadeciListi.addEventListener("click",istifadeciİsleri)
+
+function istifadeciİsleri(event){
+
+ console.log(event.target)
+ if(event.target.classList.contains("btn--delete")){
+   const silinecekTr=event.target.parentElement.parentElement;
+   const silinecekMail=event.target.parentElement.previousElementSibling.textContent;
+   istifadeciniSil(silinecekTr,silinecekMail)
+ }else if(event.target.classList.contains("btn--edit")){
+ }
+ 
+}
+
+function istifadeciniSil(silinecekTr,silinecekMail){
+    silinecekTr.remove();
+    console.log(silinecekTr,silinecekMail)
+    butunistifadəciler.forEach((istifadeci,index)=>{
+        if(istifadeci.mail===silinecekMail){
+            butunistifadəciler.splice(index,1)
+        }
+    })
+    console.log(butunistifadəciler)
 }

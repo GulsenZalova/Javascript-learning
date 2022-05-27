@@ -23,3 +23,7 @@ color: green;
 .bilgi--error{
     border: 1px solid red;
 }
+
+.fa{
+    pointer-events: none;
+}
