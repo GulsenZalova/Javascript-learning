@@ -12,8 +12,8 @@
 <body>
     <div class="container">
         <h1>Məlumat Bazası</h1>
-        <div class="bilgi bilgi--success">Uğurlu</div>
-        <div class="bilgi bilgi--error">Uğursuz</div>
+        <!-- <div class="bilgi bilgi--success">Uğurlu</div>
+        <div class="bilgi bilgi--error">Uğursuz</div> -->
         <form id="form-rehber">
             <div>
                 <label for="ad">Adı</label>
@@ -32,26 +32,17 @@
             </div>
             </form>
             <hr>
-            <table class="">
+            <table class="u-full-width">
                 <thead>
                     <tr>
                         <th>Adı</th>
                         <th>Soyadı</th>
                         <th>Email</th>
-                        <th>İşlem</th>
+                        <th>Düzənlə/Sil</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>Emre</td>
-                        <td>Altun</td>
-                        <td>fhdufhu@gmail.com</td>
-                        <td>
-
-                            <button class="btn btn--edit"> <i class="fa fa-edit" aria-hidden="true"></i></button>
-                            <button class="btn btn--delete">  <i class="fa fa-trash" aria-hidden="true"></i></button> 
-                        </td>
-                    </tr>
+                <tbody class="istifadeci-listi">
+                   
                 </tbody>
             </table>
 

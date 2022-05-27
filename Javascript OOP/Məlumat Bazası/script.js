@@ -1,7 +1,9 @@
 const ad=document.getElementById("ad");
 const soyad=document.getElementById("soyad");
 const mail=document.getElementById("mail")
-const form=document.getElementById("form-rehber")
+const form=document.getElementById("form-rehber");
+const istifadeciListi=document.querySelector(".istifadeci-listi");
+const butunistifadəciler=[];
 // Forma m'lumatlar yazılıb submit edildikdən sonra qeydEt funksiyası işə düşür
 form.addEventListener("submit", qeydEt)
 
@@ -15,7 +17,7 @@ e.preventDefault()
   }
   const netice=verilenleriKontrolEt(degerler)
    if(netice.durum){
-       console.log("Davam edə bilərsiniz.")
+       istifadeciElaveEt(degerler);
    }else{
        melumatYarat(netice.mesaj,netice.durum)
        console.log(netice.mesaj)
@@ -36,9 +38,10 @@ function verilenleriKontrolEt(degerler){
         }
 
     }
+    melumatTemizle()
     return{
         durum:true,
-        mesaj:"tamamdır"
+        mesaj:"Qeyd Edildi."
     }
 }
 
@@ -51,13 +54,43 @@ function melumatYarat(mesaj,durum){
    melumat.className='bilgi'
 document.querySelector(".container").insertBefore(melumat,form)
 if(durum){
-    melumat.classList.add("bilgi--success")
-   
+    melumat.classList.add("bilgi--success"); 
 }else{
     melumat.classList.add("bilgi--error")
-
 }
 
+setTimeout(function(){
+ const silinecekDiv=document.querySelector(".bilgi")
+ if(silinecekDiv){
+     silinecekDiv.remove()
+ }
+},2000)
 }
 
+// melumatTemizle funksiyası ilə submit oldunduqdan sonra inputlar bosaldılır.
+function melumatTemizle(){
+    ad.value="",
+    soyad.value="",
+    mail.value=""
+}
 
+// istifadeciElaveEt funksiyası ilə yeni istifadeci uygun liste elave olundu.
+function istifadeciElaveEt(degerler){
+const tr=document.createElement("tr");
+ tr.innerHTML= 
+ `
+ <tr>
+                        <td>${degerler.ad}</td>
+                        <td>${degerler.soyad}</td>
+                        <td>${degerler.mail}</td>
+                        <td>
+
+                            <button class="btn btn--edit"> <i class="fa fa-edit" aria-hidden="true"></i></button>
+                            <button class="btn btn--delete">  <i class="fa fa-trash" aria-hidden="true"></i></button> 
+                        </td>
+ `
+ istifadeciListi.appendChild(tr)
+butunistifadəciler.push(degerler)
+console.log(butunistifadəciler)
+melumatYarat("İstifadəçi qeyd edildi.", true)
+}
