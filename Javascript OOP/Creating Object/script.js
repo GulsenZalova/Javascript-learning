@@ -69,29 +69,60 @@
 
 
 
-const arzu=creatPerson("Arzu",35,true)
+// const arzu=creatPerson("Arzu",35,true)
 
-function creatPerson(ad,yas,evli){
-   return{
-       name:ad,
-       age:yas,
-       medenidurum: evli
-   }
-}
+// function creatPerson(ad,yas,evli){
+//    return{
+//        name:ad,
+//        age:yas,
+//        medenidurum: evli
+//    }
+// }
 
-console.log(arzu)
+// console.log(arzu)
 
 
-function Person(ad,soyad,yas,evlilik){
+// function Person(ad,soyad,yas,evlilik){
+//     this.ad=ad,
+//     this.soyad=soyad,
+//     this.yas=yas,
+//     this.evlilik=evlilik,
+//     this.məlumatYazdir=function(){
+//         return `${this.soyad} + ${this.ad}+ ${this.yas}+ ${this.evlilik}`
+//     }
+// }
+
+// const person= new Person("Aydın","Aydınov", 25, true)
+// console.log(person)
+// console.log(person.məlumatYazdir())
+
+
+// function Person(ad,soyad,yas){
+//     this.ad=ad,
+//     this.soyad=soyad
+//     this.yas=yas,
+//     this.məlumatVer=function(){
+//         return `Mən ${this.ad} ${this.soyad}, mənim ${this.yas} yaşım var`
+//     }
+// }
+
+// const Aytən=new Person("Aytən","Hüseynova",18)
+
+// console.log(Aytən.məlumatVer())
+
+
+function Person(ad,soyad,yas){
     this.ad=ad,
     this.soyad=soyad,
-    this.yas=yas,
-    this.evlilik=evlilik,
-    this.məlumatYazdir=function(){
-        return `${this.soyad} + ${this.ad}+ ${this.yas}+ ${this.evlilik}`
-    }
+    this.yas=yas
 }
 
-const person= new Person("Aydın","Aydınov", 25, true)
-console.log(person)
-console.log(person.məlumatYazdir())
+Person.prototype.məlumatVer=function(){
+    return `Mən ${this.ad} ${this.soyad}, mənim ${this.yas} yaşım var`
+}
+
+const Aytən=new Person("Aytən","Hüseynova",18)
+console.log(Aytən.məlumatVer())
+
+const Sara=new Person("Sara","Əhmədova",32)
+console.log(Sara.məlumatVer())
