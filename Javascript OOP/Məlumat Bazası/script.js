@@ -5,19 +5,25 @@ const form=document.getElementById("form-rehber");
 const istifadeciListi=document.querySelector(".istifadeci-listi");
 const butunistifadəciler=[];
 // Forma m'lumatlar yazılıb submit edildikdən sonra qeydEt funksiyası işə düşür
-form.addEventListener("submit", qeydEt)
+form.addEventListener("submit", qeydEt);
+let secilensetir=undefined
 
 // qeydEt funksiyası inputlardan aldığı dəyərləri obyekt halında  kontrol edilməsi üçün verilenleriKontrolEt adlı funksiyaya parametr kimi göndərir.
 function qeydEt(e){
 e.preventDefault()  
-  const degerler={
+  const elavevedeyisiklik={
       ad: ad.value,
       soyad:soyad.value,
       mail:mail.value
   }
-  const netice=verilenleriKontrolEt(degerler)
+  const netice=verilenleriKontrolEt(elavevedeyisiklik)
    if(netice.durum){
-       istifadeciElaveEt(degerler);
+       if(secilensetir){
+        //   yenile
+        istifadeciniYenile(elavevedeyisiklik);
+       }else{
+        istifadeciElaveEt(elavevedeyisiklik);
+       }
    }else{
        melumatYarat(netice.mesaj,netice.durum)
        console.log(netice.mesaj)
@@ -25,9 +31,9 @@ e.preventDefault()
 }
 // İnputlardan gələn obyektin içərisində gəzərək onların dəyərlərini yoxlayır və əgər məlumat varsa, bunu göstərir, yoxdursa obyekt formasında dəyərlər göndərir.
 
-function verilenleriKontrolEt(degerler){
-    for(const deger in degerler){
-        if(degerler[deger]){
+function verilenleriKontrolEt(elavevedeyisiklik){
+    for(const deger in elavevedeyisiklik){
+        if(elavevedeyisiklik[deger]){
         }else{
             const netice={
                 durum:false,
@@ -73,14 +79,14 @@ function melumatTemizle(){
 }
 
 // istifadeciElaveEt funksiyası ilə yeni istifadeci uygun liste elave olundu.
-function istifadeciElaveEt(degerler){
+function istifadeciElaveEt(elavevedeyisiklik){
 const tr=document.createElement("tr");
  tr.innerHTML= 
  `
  <tr>
-                        <td>${degerler.ad}</td>
-                        <td>${degerler.soyad}</td>
-                        <td>${degerler.mail}</td>
+                        <td>${elavevedeyisiklik.ad}</td>
+                        <td>${elavevedeyisiklik.soyad}</td>
+                        <td>${elavevedeyisiklik.mail}</td>
                         <td>
 
                             <button class="btn btn--edit"> <i class="fa fa-edit" aria-hidden="true"></i></button>
@@ -88,7 +94,7 @@ const tr=document.createElement("tr");
                         </td>
  `
  istifadeciListi.appendChild(tr)
-butunistifadəciler.push(degerler)
+butunistifadəciler.push(elavevedeyisiklik)
 melumatYarat("İstifadəçi qeyd edildi.", true)
 }
 
@@ -103,6 +109,14 @@ function istifadeciİsleri(event){
    const silinecekMail=event.target.parentElement.previousElementSibling.textContent;
    istifadeciniSil(silinecekTr,silinecekMail)
  }else if(event.target.classList.contains("btn--edit")){
+     document.querySelector(".qeydetdeyisdir").value='Yenilə';
+     let secilenTr=event.target.parentElement.parentElement;
+     const yenilenecekMail=secilenTr.cells[2].textContent;
+     ad.value=secilenTr.cells[0].textContent
+     soyad.value=secilenTr.cells[1].textContent;
+     mail.value=secilenTr.cells[2].textContent;
+     secilensetir=secilenTr;
+     console.log(butunistifadəciler)
  }
  
 }
@@ -116,4 +130,22 @@ function istifadeciniSil(silinecekTr,silinecekMail){
         }
     })
     console.log(butunistifadəciler)
+    melumatTemizle();
+    document.querySelector(".qeydetdeyisdir").value="Kaydet"
+}
+
+function istifadeciniYenile(istifadeci){
+    // istifadeci parametrinin icinde istifadecinin yenni deyeri var.
+    // Secilen Setirde kohne deyerler var.
+    for(let i=0; i<butunistifadəciler.length;i++){
+        if(butunistifadəciler[i].mail=== secilensetir.cells[2].textContent){
+            butunistifadəciler[i]=istifadeci;
+            break;
+        }
+    }
+    secilensetir.cells[0].textContent=istifadeci.ad;
+    secilensetir.cells[1].textContent=istifadeci.soyad;
+    secilensetir.cells[2].textContent=istifadeci.mail;
+    document.querySelector(".qeydetdeyisdir").value="Kaydet";
+    secilensetir=undefined;
 }
