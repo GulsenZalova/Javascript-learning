@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <header id="header-app">
+        <span id="logo"> 
+            Görüləcək İşlər
+        </span>
+    </header>
+    <main>
+        <section id="container-new-task">
+            <div class="header">
+                Yeni bir iş əlavə et
+            </div>
+            <div id="new-task">
+                <input id="txt-add-task" type="text">
+                <button id="btn-add-task">Əlavə et</button>
+            </div>
+            <div class="info info-success">
+                <div class="info-icon">
+                    <span><i class="fa-solid fa-circle-info"></i></span>
+                </div>
+            <div class="info-text">
+               Yeni Task əlavə olundu
+            </div>
+            </div>
+        </section>
+        <section id="container-search-task">
+            <div class="header">Görüləcək işi axtar</div>
+            <input id="txt-search-task" type="text">
+        </section>
+        <section id="container-task-list">
+            <div class="header">
+                Qeydli Tasklar
+            </div>
+            <div class="task-list">
+                <div class="info info-danger">
+                    <div class="info-icon">
+                        <span><i class="fa-solid fa-circle-info"></i></span>
+                    </div>
+                <div class="info-text">
+                   Qeydli Task Yoxdur
+                </div>
+                </div>
+                <div class="task">
+                    <div class="task-text">
+                        Lorem ipsum dolor sit amet. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequuntur aliquid nemo beatae. Beatae tempore accusamus cupiditate, harum fugit quis ullam totam aut neque placeat dignissimos quia sequi eligendi, eum similique.
+                    </div>
+                    <div class="task-icon">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+                </div>
+                <button id="btn-all-tasks-complete" >
+                    Hamısını tamamla
+                </button>
+            </div>
+        </section>
+        <!-- <section id="container-new-task">
+            <div class="header">
+                Yeni bir iş əlavə et
+            </div>
+            <div id="new-task">
+                <input id="txt-add-task" type="text">
+                <button id="btn-add-task">Əlavə et</button>
+            </div>
+        </section>
+
+
+
+        <section id="container-search-task">
+            <div class="header">Görüləcək işi axtar</div>
+            <input id="txt-search-task" type="text">
+        </section> -->
+
+        <section id="container-completed-task-list">
+            <div class="header">
+                Tamalanmış Tasklar
+            </div>
+            <div class="task-list">
+                <div class="info info-danger">
+                    <div class="info-icon">
+                        <span><i class="fa-solid fa-circle-info"></i></span>
+                    </div>
+                <div class="info-text">
+                   Tamamlanmış Task Yoxdur
+                </div>
+                </div>
+                <div class="task">
+                    <div class="task-text">
+                        Lorem ipsum dolor sit amet. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequuntur aliquid nemo beatae. Beatae tempore accusamus cupiditate, harum fugit quis ullam totam aut neque placeat dignissimos quia sequi eligendi, eum similique.
+                    </div>
+                    <div class="task-icon">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </div>
+                </div>
+                <button id="btn-all-tasks-remove" >
+                    Hamısını Sil
+                </button>
+            </div>
+
+        </section>
+    </main>
+</body>
+</html>
