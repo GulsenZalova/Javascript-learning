@@ -54,6 +54,8 @@ function addCompleteTask(e){
        info.remove();
        btnAllTasksRemove.style.display="block"
      }
+     removeTaskLocalStorage(completedTaskText);
+    //  removeTaskUI();
     }
 }
 
@@ -78,7 +80,6 @@ taskList.appendChild(task)
 taskList.insertBefore(task, btnAllTasksComplete)
 }
 
-// Test
 function addCompletedTaskUI(completedTaskText){
     const task=document.createElement("div");
     const taskText=document.createElement("div");
@@ -100,18 +101,26 @@ function addCompletedTaskUI(completedTaskText){
 
 }
 
-
-
-
 function  addTaskLocalStorage(){
     localStorage.setItem("tasks",JSON.stringify(tasks))
 }
+
+function  removeTaskLocalStorage(completedTaskText){
+    tasks.forEach(function(removeTask,index){
+        if(removeTask==completedTaskText){
+            tasks.splice(index,1)
+        }
+        localStorage.setItem("tasks",JSON.stringify(tasks))
+    })
+
+}
+
 function addCompleteTaskLocalStorage(){
     localStorage.setItem("completedtasks",JSON.stringify(completedtasks))
 }
 
 function getTasks(){
-    if(localStorage.getItem("tasks")!==null && localStorage.getItem("tasks")!==""){
+    if(localStorage.getItem("tasks")!==null && localStorage.getItem("tasks")!==""&& localStorage.getItem("tasks")!=="[]"){
         tasks=JSON.parse(localStorage.getItem("tasks"))
         tasks.forEach(element => addTaskUI(element));
     }else{
@@ -119,8 +128,6 @@ function getTasks(){
         btnAllTasksRemove.style.display="none"
     }
 }
-
-// // Test
 function getCompletedTasks(){
     if(localStorage.getItem("completedtasks")!==null && localStorage.getItem("completedtasks")!==""){
         completedtasks=JSON.parse(localStorage.getItem("completedtasks"))
@@ -133,9 +140,7 @@ function getCompletedTasks(){
 
 }
 
-
 function showInfo(type="",message="",container="",ref="",timeout=""){
-
 let info=document.createElement("div");
 let infoİcon=document.createElement("div");
 let infoText=document.createElement("div");
