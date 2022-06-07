@@ -55,7 +55,8 @@ function addCompleteTask(e){
        btnAllTasksRemove.style.display="block"
      }
      removeTaskLocalStorage(completedTaskText);
-    //  removeTaskUI();
+     removeTaskUI(e.target);
+     getTasks()
     }
 }
 
@@ -115,6 +116,9 @@ function  removeTaskLocalStorage(completedTaskText){
 
 }
 
+function removeTaskUI(removeTask){
+    removeTask.parentElement.parentElement.remove()
+}
 function addCompleteTaskLocalStorage(){
     localStorage.setItem("completedtasks",JSON.stringify(completedtasks))
 }
@@ -123,19 +127,20 @@ function getTasks(){
     if(localStorage.getItem("tasks")!==null && localStorage.getItem("tasks")!==""&& localStorage.getItem("tasks")!=="[]"){
         tasks=JSON.parse(localStorage.getItem("tasks"))
         tasks.forEach(element => addTaskUI(element));
+        btnAllTasksComplete.style.display="block"
     }else{
         showInfo("danger","Qeydli task yoxdur",containerTaskList,taskList);
-        btnAllTasksRemove.style.display="none"
+        btnAllTasksComplete.style.display="none"
     }
 }
 function getCompletedTasks(){
     if(localStorage.getItem("completedtasks")!==null && localStorage.getItem("completedtasks")!==""){
         completedtasks=JSON.parse(localStorage.getItem("completedtasks"))
         completedtasks.forEach(element => addCompletedTaskUI(element));
-        btnAllTasksComplete.style.display="block"
+        btnAllTasksRemove.style.display="block"
     }else{
         showInfo("danger","Tamamlanmış task yoxdur",containerCompletedTaskList,completedTaskList);
-        btnAllTasksComplete.style.display="none"
+        btnAllTasksRemove.style.display="none"
     }
 
 }
