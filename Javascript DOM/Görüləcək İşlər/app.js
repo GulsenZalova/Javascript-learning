@@ -1,8 +1,10 @@
 let txtAddTask=document.getElementById("txt-add-task");
 let btnAddTask=document.getElementById("btn-add-task");
 let taskText=document.querySelector(".task-text");
-let taskList=document.querySelector(".task-list");
-let btnAllTasksComplete=document.querySelector("#btn-all-tasks-complete")
+let taskList=document.querySelector("#container-task-list .task-list");
+let btnAllTasksComplete=document.querySelector("#btn-all-tasks-complete");
+let containerNewTask=document.getElementById("container-new-task");
+let containerTaskList=document.getElementById("container-task-list");
 let tasks=[];
 // let newTaskText=""
 eventListeners()
@@ -21,6 +23,7 @@ function addTask(){
         tasks.push(newTaskText);
         addTaskUI(newTaskText);
         addTaskLocalStorage();
+        showInfo("success","Yeni task əlavə edildi",containerNewTask,"",1500);
         txtAddTask.value= ""
     }
 
@@ -28,18 +31,6 @@ function addTask(){
 
 // burada parametr şəkilində gələn imputa yazılmış dəyərdir.
 function addTaskUI(newTask){
- /*
- <!-- <div class="task">
-                    <div class="task-text">
-                        Lorem ipsum dolor sit amet. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequuntur aliquid nemo beatae. Beatae tempore accusamus cupiditate, harum fugit quis ullam totam aut neque placeat dignissimos quia sequi eligendi, eum similique.
-                    </div>
-                    <div class="task-icon">
-                             <i class="fa-solid fa-trash-can"></i>
-                    </div>
-                </div> -->
- 
- */
-
 const task=document.createElement("div");
 const taskText=document.createElement("div");
 const taskİcon=document.createElement("div");
@@ -56,7 +47,7 @@ task.appendChild(taskİcon);
 
 taskList.appendChild(task)
 
-taskList.insertBefore(task , btnAllTasksComplete)
+taskList.insertBefore(task, btnAllTasksComplete)
 }
 
 function  addTaskLocalStorage(){
@@ -68,6 +59,43 @@ function getTasks(){
         tasks=JSON.parse(localStorage.getItem("tasks"))
         tasks.forEach(element => addTaskUI(element));
     }else{
-        // qeydli task yoxdur infosu cıxacaq
+        showInfo("danger","Qeydli task yoxdur",containerTaskList,taskList,timeout="")
     }
+}
+
+function showInfo(type="",message="",container="",ref="",timeout=""){
+/*
+<div class="info info-success">
+                <div class="info-icon">
+                    <span><i class="fa-solid fa-circle-info"></i></span>
+                </div>
+            <div class="info-text">
+               Yeni Task əlavə olundu
+            </div>
+            </div>
+*/
+
+let info=document.createElement("div");
+let infoİcon=document.createElement("div");
+let infoText=document.createElement("div");
+
+info.className=`info info-${type}`;
+infoİcon.className="info-icon";
+infoText.className="info-text";
+
+infoText.innerText=message;
+infoİcon.innerHTML='<i class="fa-solid fa-circle-info"></i>'
+
+info.appendChild(infoİcon);
+info.appendChild(infoText);
+if(ref!==""){
+    container.insertBefore(info,ref)
+}else{
+    container.appendChild(info)
+}
+
+if(timeout!=="")
+setTimeout(()=>{
+    info.remove()
+},timeout)
 }
