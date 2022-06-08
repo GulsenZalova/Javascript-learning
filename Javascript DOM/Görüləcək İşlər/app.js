@@ -21,22 +21,32 @@ getCompletedTasks()
 function eventListeners(){
     btnAddTask.addEventListener("click", addTask);
     taskList.addEventListener("click",addCompleteTask)
+    completedTaskList.addEventListener("click",removeCompleteTask)
 
 }
 
 function addTask(){
     let newTaskText=txtAddTask.value.trim();
     if(newTaskText!==null &&newTaskText!==""){
-        tasks.push(newTaskText);
-        addTaskUI(newTaskText);
-        addTaskLocalStorage();
-        showInfo("success","Yeni task əlavə edildi",containerNewTask,"",1500);
-        txtAddTask.value= ""
-        let info=document.querySelector("#container-task-list .info")
-      if(info!==null){
-        info.remove();
-        btnAllTasksComplete.style.display="block"
-      }
+        if(tasks.indexOf(newTaskText)===-1){
+            tasks.push(newTaskText);
+            addTaskUI(newTaskText);
+            addTaskLocalStorage();
+            showInfo("success","Yeni task əlavə edildi",containerNewTask,"",1500);
+            txtAddTask.value= ""
+            let info=document.querySelector("#container-task-list .info")
+          if(info!==null){
+            info.remove();
+            btnAllTasksComplete.style.display="block"
+          }
+        }else{
+            showInfo("danger","Bu task siyahıda var artıq",containerNewTask,"",2000);
+            txtAddTask.value= ""
+        }
+    }
+    else{
+        showInfo("danger","Task daxil edilməyib",containerNewTask,"",2000);
+        txtAddTask.value= "" 
     }
 
 }
@@ -56,7 +66,9 @@ function addCompleteTask(e){
      }
      removeTaskLocalStorage(completedTaskText);
      removeTaskUI(e.target);
-     getTasks()
+     if(tasks.length===0){
+        getTasks() 
+     }
     }
 }
 
@@ -109,9 +121,9 @@ function  addTaskLocalStorage(){
 function  removeTaskLocalStorage(completedTaskText){
     tasks.forEach(function(removeTask,index){
         if(removeTask==completedTaskText){
-            tasks.splice(index,1)
+            completedtasks.splice(index,1)
         }
-        localStorage.setItem("tasks",JSON.stringify(tasks))
+        localStorage.setItem("completedtasks",JSON.stringify(completedtasks))
     })
 
 }
@@ -122,7 +134,20 @@ function removeTaskUI(removeTask){
 function addCompleteTaskLocalStorage(){
     localStorage.setItem("completedtasks",JSON.stringify(completedtasks))
 }
-
+//  function removeCompleteTask(e){
+//     let removeCompleteTasks= e.target
+//     let remove=e.target.parentElement.previousElementSibling.textContent
+//     if(removeCompleteTasks.className==="fa-solid fa-trash-can"){
+//         removeCompleteTasks.parentElement.parentElement.remove()
+//     }
+//     completedtasks.forEach(function(completeTaskRemove,index){
+//         if(completeTaskRemove===remove){
+//             completedtasks.splice(index,1)
+//         }
+//         localStorage.setItem("complete")
+//     })
+//  }
+ 
 function getTasks(){
     if(localStorage.getItem("tasks")!==null && localStorage.getItem("tasks")!==""&& localStorage.getItem("tasks")!=="[]"){
         tasks=JSON.parse(localStorage.getItem("tasks"))
