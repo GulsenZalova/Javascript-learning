@@ -56,7 +56,5 @@ async function commentShow(){
    catch(error){
     console.log(error)
    }
-
 }     
-
 commentShow()
