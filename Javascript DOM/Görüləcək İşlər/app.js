@@ -121,9 +121,9 @@ function  addTaskLocalStorage(){
 function  removeTaskLocalStorage(completedTaskText){
     tasks.forEach(function(removeTask,index){
         if(removeTask==completedTaskText){
-            completedtasks.splice(index,1)
+            tasks.splice(index,1)
         }
-        localStorage.setItem("completedtasks",JSON.stringify(completedtasks))
+        localStorage.setItem("tasks",JSON.stringify(tasks))
     })
 
 }
@@ -134,19 +134,29 @@ function removeTaskUI(removeTask){
 function addCompleteTaskLocalStorage(){
     localStorage.setItem("completedtasks",JSON.stringify(completedtasks))
 }
-//  function removeCompleteTask(e){
-//     let removeCompleteTasks= e.target
-//     let remove=e.target.parentElement.previousElementSibling.textContent
-//     if(removeCompleteTasks.className==="fa-solid fa-trash-can"){
-//         removeCompleteTasks.parentElement.parentElement.remove()
-//     }
-//     completedtasks.forEach(function(completeTaskRemove,index){
-//         if(completeTaskRemove===remove){
-//             completedtasks.splice(index,1)
-//         }
-//         localStorage.setItem("complete")
-//     })
-//  }
+ function removeCompleteTask(e){
+    let removeCompleteTasks= e.target
+    let remove=e.target.parentElement.previousElementSibling.textContent
+    if(removeCompleteTasks.className==="fa-solid fa-trash-can"){
+        removeCompleteTasks.parentElement.parentElement.remove()
+    }
+    completedtasks.forEach(function(completeTaskRemove,index){
+        if(completeTaskRemove===remove){
+            completedtasks.splice(index,1)
+        }
+        localStorage.setItem("completedtasks",JSON.stringify(completedtasks))
+        let info=document.querySelector("#container-completed-task-list .info") 
+     if(info!==null){
+       info.remove();
+       btnAllTasksRemove.style.display="block"
+     }
+     removeTaskLocalStorage(remove);
+     removeTaskUI(e.target);
+     if(completedtasks.length===0){
+       getCompletedTasks()
+     }
+    })
+ }
  
 function getTasks(){
     if(localStorage.getItem("tasks")!==null && localStorage.getItem("tasks")!==""&& localStorage.getItem("tasks")!=="[]"){

@@ -111,18 +111,112 @@
 // console.log(Aytən.məlumatVer())
 
 
-function Person(ad,soyad,yas){
-    this.ad=ad,
-    this.soyad=soyad,
-    this.yas=yas
+// function Person(ad,soyad,yas){
+//     this.ad=ad,
+//     this.soyad=soyad,
+//     this.yas=yas
+// }
+
+// Person.prototype.məlumatVer=function(){
+//     return `Mən ${this.ad} ${this.soyad}, mənim ${this.yas} yaşım var`
+// }
+
+// const Aytən=new Person("Aytən","Hüseynova",18)
+// console.log(Aytən.məlumatVer())
+
+// const Sara=new Person("Sara","Əhmədova",32)
+// console.log(Sara.məlumatVer())
+
+
+
+
+// console.log(this)
+
+
+// function test(){
+//     console.log(this)
+// }
+// test()
+
+// const Person={
+//     name:"ad",
+//     surname: "soyad",
+//     fullname:function(){
+//         console.log(this)
+//     }
+// }
+// Person.fullname()
+
+
+// function tələbəMəlumatları(ad,soyad){
+//     const telebeler={}
+//     this.name=ad,
+//     this.soyad=soyad
+//     return telebeler
+// }
+
+// const Ayan= new tələbəMəlumatları("Ayan","Rəsulova")
+// console.log(Ayan)
+
+// function tələbəMəlumatları(ad,soyad){
+//     const telebe={
+//         name: ad,
+//         surname:soyad,
+//         fullname:function(){
+//             console.log(this)
+//             console.log(this.name)
+//             console.log(this.surname)
+//         }
+//     }
+//     return telebe
+// }
+// const Ayan= new tələbəMəlumatları("Ayan","Rəsulova")
+// console.log(Ayan)
+// console.log(Ayan.fullname())
+
+
+// function Person(ad,soyad){
+//     this.ad=ad,
+//     this.soyad=soyad
+// }
+
+// Person("s","q")
+// console.log(Person)
+// console.log(this)
+// console.log(ad)
+
+
+// function Person(_name,_surname){
+//     this.name=_name,
+//     this.surname=_surname
+//     // this.fullname=`${this.name} ${this.surname}`
+// }
+// const Lale= new Person("Lalə","Əhmədli")
+// const Jale= new Person("Jalə","Əhmədli")
+
+// Person.prototype.fullname=fullname=function(){
+//     return `${this.name} ${this.surname}`
+// }
+// console.log(Lale)
+// console.log(Jale)
+// console.log(Lale.fullname())
+
+
+
+const Person=
+{
+// name:"Arzu",
+// surname:"Əlizadə",
 }
 
-Person.prototype.məlumatVer=function(){
-    return `Mən ${this.ad} ${this.soyad}, mənim ${this.yas} yaşım var`
-}
+const P1=Object.create(Person)
+console.log(P1.name)
 
-const Aytən=new Person("Aytən","Hüseynova",18)
-console.log(Aytən.məlumatVer())
+// P1.name="Nigar"
+console.log(P1.surname)
 
-const Sara=new Person("Sara","Əhmədova",32)
-console.log(Sara.məlumatVer())
+
+console.log(P1.name)
+Object.prototype.name="Fuad"
+Object.prototype.surname="Vəlizadə"
+console.log(P1.surname)
