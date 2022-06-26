@@ -13,20 +13,59 @@ headersBtn.addEventListener("click",headersData)
 errorBtn.addEventListener("click",errorlar)
 
 function getData(){
- axios({
-    method:"GET",
-    url:"https://jsonplaceholder.typicode.com/users",
-    params:{
-        _limit:2
-    }
 
- }).then(response=>neticeniYazdir(response))
-    .catch(error=>console.log(error))
+// axiosun daha uzun yazılma formasından daha qısa yazılma formasına 4 üsulu
+
+// axios({
+//   method:"GET",
+//   url:"https://jsonplaceholder.typicode.com/users",
+//   params:{
+//     _limit:1
+//   }
+// })
+//   .then(response=>neticeniYazdir(response))
+//   .catch(xeta=>console.log(xeta))
+
+// axios
+//       .get("https://jsonplaceholder.typicode.com/users",{
+//         params:{
+//           _limit:1
+//         }
+//       })
+//         .then(response=>neticeniYazdir(response))
+//         .catch(xeta=>console.log(xeta))
+
+// axios
+//   .get("https://jsonplaceholder.typicode.com/users?_limit=1")
+//   .then(response=>neticeniYazdir(response))
+//   .catch(xeta=>console.log(xetanıYaz))
+
+axios("https://jsonplaceholder.typicode.com/users?_limit=1")
+     .then(response=>neticeniYazdir(response))
+     .catch(xeta=>console.log(xeta))
 }
 
 function postData(){
-    console.log("salam post")
-    }
+
+  //  axios.post('https://jsonplaceholder.typicode.com/posts',{
+  //   body:JSON.stringify({
+  //     title:"User",
+  //     body:"Melumat",
+  //     userİd:3
+  //   }
+  //   )
+  //  }).then(response=>neticeniYazdir(response))
+  //    .catch(xeta=>console.log(xeta))
+
+   axios.post("https://jsonplaceholder.typicode.com/users",{
+       name:"Gülşən",
+       surname:"Zalova",
+       email:"zalova0202@gmail.com"
+   })
+    .then(response=>neticeniYazdir(response))
+}
+
+
 
 function putPatchData(){
 console.log("salam putpatch")
