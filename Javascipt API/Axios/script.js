@@ -1,6 +1,7 @@
 const getBtn=document.getElementById("get")
 const postBtn=document.getElementById("post")
 const putPatchBtn=document.getElementById("put-patch")
+const deleteBtn=document.getElementById("delete")
 const eyniAndaMüracietBtn=document.getElementById("eyni-anda-müraciet")
 const headersBtn=document.getElementById("headers")
 const errorBtn=document.getElementById("error")
@@ -8,6 +9,7 @@ const errorBtn=document.getElementById("error")
 getBtn.addEventListener("click",getData)
 postBtn.addEventListener("click",postData)
 putPatchBtn.addEventListener("click",putPatchData)
+deleteBtn.addEventListener("click",deleteData)
 eyniAndaMüracietBtn.addEventListener("click", eyniAndaMüracietData)
 headersBtn.addEventListener("click",headersData)
 errorBtn.addEventListener("click",errorlar)
@@ -65,13 +67,47 @@ function postData(){
     .then(response=>neticeniYazdir(response))
 }
 
-
-
 function putPatchData(){
-console.log("salam putpatch")
+axios.put("https://jsonplaceholder.typicode.com/users/1",{
+  name:"Aytən",
+  surname:"Zalova",
+  email:"aadfbfbhdtntdjd"
+})
+  .then(response=>neticeniYazdir(response))
+
+ axios.patch("https://jsonplaceholder.typicode.com/users/1",{
+    name:"Aytən",
+    surname:"Zalova",
+    email:"aadfbfbhdtntdjd"
+  })
+    .then(response=>neticeniYazdir(response))
+}
+
+function deleteData(){
+  axios.delete('https://jsonplaceholder.typicode.com/posts/1')
+       .then(response=>neticeniYazdir(response))
+  axios.delete('https://jsonplaceholder.typicode.com/users/1')
+       .then(response=>neticeniYazdir(response))
 }
 function eyniAndaMüracietData(){
-    console.log("salam eyniAndaMüraciet")
+    // axios.all([
+    //   axios.get("https://jsonplaceholder.typicode.com/users/1"),
+    //   axios.get('https://jsonplaceholder.typicode.com/posts/1')
+    // ]).then(response=>{
+    //   console.log(response[0])
+    //   console.log(response[1])
+    // })
+
+    axios.all([
+      axios.get("https://jsonplaceholder.typicode.com/users/1"),
+      axios.get('https://jsonplaceholder.typicode.com/posts/1')
+    ]).then(axios.spread((userler,postlar)=>{
+        console.log(userler)
+        console.log(postlar)
+        neticeniYazdir(userler)
+        neticeniYazdir(postlar)
+    }))
+
     }
 
 function headersData(){
@@ -97,6 +133,7 @@ function xetanıYaz(error){
 }
 
 function neticeniYazdir(response){
+  console.log(response)
     document.querySelector(".netice").innerHTML=
     `
     <div class="notification is-info">
