@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Skeleton CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" integrity="sha512-5fsy+3xG8N/1PV5MIJz9ZsWpkltijBI48gBzQ/Z2eVATePGHOkMIn+xTDHIfTZFVb9GMpflF2wOWItqxAP2oLQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="style.css">
+    <title>Crud App</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Crud App</h1>
+    <!-- <div class="info info-success">Uğurlu</div>
+    <div class="info info-error">Uğursuz</div> -->
+    <form class="crud-form">
+        <div>
+            <label for="ad">Name</label>
+            <input type="text" id="ad" class="u-full-width">
+        </div>
+        <div>
+            <label for="soyad">Surname</label>
+            <input type="text" id="soyad" class="u-full-width">
+        </div>
+        <div>
+            <label for="mail">Mail</label>
+            <input type="text" id="mail" class="u-full-width">
+        </div>
+        <div>
+            <input type="submit" value="Save" class="button-primary u-full-width saveupdate">
+        </div>
+    </form>
+    <table class="u-full-width">
+        <thead>
+            <tr>
+                <td>Name</td>
+                <td>Surname</td>
+                <td>Mail</td>
+                <td>Update/Delete</td>
+            </tr>
+        </thead>
+        <tbody class="crud-list">
+            
+        </tbody>
+    </table>
+</div>
+
+    <!-- Javascript CSS -->
+    <script src="app.js"></script>
+</body>
+</html>

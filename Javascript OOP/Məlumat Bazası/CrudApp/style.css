@@ -1,0 +1,29 @@
+.btn{
+    border: none;
+    outline: none;
+    padding: 0.5rem;
+}
+.btn--edit{
+    color: green;
+
+}
+.btn--delete{
+    color: red;
+}
+
+.info{
+    margin: 1rem 0;
+    padding: 1rem;
+    color: black;
+    border-radius: 4px;
+
+}
+.info-success{
+border: 1px solid green;
+}
+.info-error{
+border: 1px solid red;
+}
+.fa{
+    pointer-events: none;
+}
